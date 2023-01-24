@@ -1,26 +1,27 @@
 import json
 from flask import Flask, jsonify, request
-from services.fee_calculator import the_fee_calculator
+from services.fee_calculator import FeeCalculator
 from entitites.response_object import ResponseObject
-
-class App:
-
-    def __init__(self):
-        pass
-
-    def calculate_fee(self):
-        return the_fee_calculator.calculate_fee()
-
-the_app = App()
 
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET"])
-def return_delivery_fee():
-    return "hello"
-
 @app.route("/", methods=["POST"])
-def insert_delivery_info():
+def index():
+    """Function to handle and response to the incoming POST request.
+
+    Returns:
+        POST request: A POST request that includes a json object, which includes a delivery fee field as the fee as it's value.
+    """
     delivery_info = request.get_json()
-    return jsonify({"delivery_fee": the_app.calculate_fee()})
+    # Forming a response object from the incoming json.
+    response_object = ResponseObject(
+        cart_value=delivery_info["cart_value"],
+        delivery_distance=delivery_info["delivery_distance"],
+        number_of_items=delivery_info["number_of_items"],
+        time=delivery_info["time"]
+    )
+    fee_calculator = FeeCalculator(response_object)
+    # Counting the fee using fee calculator
+    delivery_fee = fee_calculator.calculate_fee()
+    return jsonify({"delivery_fee": delivery_fee})
