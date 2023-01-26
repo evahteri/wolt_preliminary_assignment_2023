@@ -13,6 +13,11 @@ class FeeCalculator:
         self.rush_end_time = datetime.datetime.strptime("19:00:00", "%H:%M:%S")
 
     def calculate_fee(self):
+        """Main function to calculate the fee for the delivery.
+
+        Returns:
+            integer: The fee in cents
+        """
         self._cart_value_less_than_1000()
         self._delivery_distance_fee()
         self._number_of_items()
@@ -59,7 +64,7 @@ class FeeCalculator:
         """
         if self.response_object.weekday == 5:
             if self.response_object.time_of_day >= self.rush_start_time and self.response_object.time_of_day <= self.rush_end_time:
-                self.fee * 1.2
+                self.fee = self.fee * 1.2
 
 
 
