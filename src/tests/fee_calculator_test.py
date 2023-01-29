@@ -2,6 +2,7 @@ import unittest
 from services.fee_calculator import FeeCalculator
 from entitites.response_object import ResponseObject
 
+
 class TestFeeCalculator(unittest.TestCase):
     def setUp(self):
         self.test_response_object = ResponseObject(
@@ -10,11 +11,10 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        self.test_fee_calculator = FeeCalculator(response_object=
-        self.test_response_object
-        )
-    
-    def test_fee_calculator(self):
+        self.test_fee_calculator = FeeCalculator(response_object=self.test_response_object
+                                                 )
+
+    def test_fee_calculator_example_order(self):
         """Testing the calculator with the example order
         """
         correct_fee = 710
@@ -31,12 +31,11 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
-    
+
     def test_fee_calculator_delivery_distance_value_under_1000(self):
         """Testing the calculator with delivery distance under one kilometer
         """
@@ -47,9 +46,8 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
 
@@ -63,9 +61,8 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
 
@@ -79,9 +76,8 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
 
@@ -95,16 +91,15 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
 
     def test_fee_calculator_delivery_distance_over_1500_under_2000(self):
         """Testing the calculator with delivery distance between 1500 and 2000 meters
         """
-        
+
         correct_fee = 400
         test_response_object = ResponseObject(
             cart_value=1100,
@@ -112,12 +107,10 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
-
 
     def test_fee_calculator_number_of_items_10(self):
         """Testing the calculator if there are 10 items
@@ -129,9 +122,8 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=10,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
 
@@ -145,9 +137,8 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=13,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
 
@@ -161,12 +152,11 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=20,
             time="2021-10-12T13:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
-    
+
     def test_fee_calculator_fee_friday_rush(self):
         """Test the calculator during friday rush
         """
@@ -177,12 +167,11 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2023-01-27T16:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)
-    
+
     def test_fee_calculator_fee_friday_not_rush(self):
         """Test the calculator if it is friday but not rush hour
         """
@@ -193,8 +182,7 @@ class TestFeeCalculator(unittest.TestCase):
             number_of_items=4,
             time="2023-01-27T11:00:00Z"
         )
-        test_fee_calculator = FeeCalculator(response_object=
-        test_response_object
-        )
+        test_fee_calculator = FeeCalculator(response_object=test_response_object
+                                            )
         calculated_fee = test_fee_calculator.calculate_fee()
         self.assertEqual(correct_fee, calculated_fee)

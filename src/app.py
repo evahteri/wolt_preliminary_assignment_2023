@@ -1,4 +1,3 @@
-import json
 from flask import Flask, jsonify, request
 from services.fee_calculator import FeeCalculator
 from entitites.response_object import ResponseObject
@@ -11,7 +10,7 @@ def index():
     """Function to handle and response to the incoming POST request.
 
     Returns:
-        POST request: A POST request that includes a json object, which includes a delivery fee field as the fee as it's value.
+        JSON -file: A json object, which includes a delivery fee field as the fee as it's value.
     """
     delivery_info = request.get_json()
     # Forming a response object from the incoming json.
