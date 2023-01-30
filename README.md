@@ -6,6 +6,8 @@ This API is made for Wolt's preliminary assignment 2023. Details on the assignme
 
 ### Install and Launch
 
+Make sure you have Python version 3.10 or higher to make sure the program functions correctly.
+
 To launch the API locally you need to run these commands:
 
 In the root directory:
