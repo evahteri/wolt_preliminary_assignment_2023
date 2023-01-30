@@ -1,6 +1,6 @@
 # My Solution for Preliminary Assignment for Engineering Positions Summer 2023
 
-This API is made for Wolt's preliminary assignment 2023. Details on the assignment can be found [here](https://github.com/woltapp/engineering-summer-intern-2023)
+This API is made for Wolt's preliminary assignment 2023. Details on the assignment can be found [here](https://github.com/woltapp/engineering-summer-intern-2023). This is my solution for the backend version.
 
 ## Instructions
 
